@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using hackernewsapi.Model;
 
 namespace hackernewsapi.Services{
     public interface IHackerNewsService
     {
-        Task<IEnumerable<Story>> GetBestOrderedStories();
+        Task<IEnumerable<OutputStory>> GetBestOrderedStories();
     }
 }

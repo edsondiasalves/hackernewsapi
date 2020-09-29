@@ -6,21 +6,27 @@ using System.Threading.Tasks;
 using hackernewsapi.Services.Api;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using hackernewsapi.Model;
+using AutoMapper;
 
 namespace hackernewsapi.Services{
     public class HackerNewsService : IHackerNewsService
     {
         private IHackerNewsApi _hackerNewsApi;
-        public HackerNewsService([FromServices]IHackerNewsApi hackerNewsApi){
+        private IMapper _mapper;
+        public HackerNewsService([FromServices]IHackerNewsApi hackerNewsApi, IMapper mapper){
             _hackerNewsApi = hackerNewsApi;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Story>> GetBestOrderedStories()
+        public async Task<IEnumerable<OutputStory>> GetBestOrderedStories()
         {
-            var stories = new List<Story>();
+            var outputStories = new List<OutputStory>();
 
             using (var client = new HttpClient()){            
                 var bestStories = await _hackerNewsApi.GetBestStories();
+                var stories = new List<Story>();
+                
                 Array.Sort(bestStories);
 
                 var tasks = bestStories.Select(async storyId =>
@@ -30,9 +36,11 @@ namespace hackernewsapi.Services{
                 }).ToList();
 
                 Task.WaitAll(tasks.ToArray());
+
+                outputStories = _mapper.Map<List<OutputStory>>(stories);
             }
 
-            return stories.OrderByDescending(s => s.score).Take(20);
+            return outputStories.OrderByDescending(s => s.score).Take(20);
         }
     }
 

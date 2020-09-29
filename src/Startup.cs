@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using AutoMapper;
+using hackernewsapi.Profiles;
 
 namespace hackernewsapi
 {
@@ -28,6 +30,7 @@ namespace hackernewsapi
             services.AddRefitClient<IHackerNewsApi>().ConfigureHttpClient(
                 c => c.BaseAddress = new Uri(Configuration["HackerNewsBaseApi"])
             );
+            services.AddAutoMapper(typeof(HackerNewsProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

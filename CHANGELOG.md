@@ -1,3 +1,7 @@
+# 0.0.4
+    -   Adding AutoMapper library
+    -   Returning custom story format
+    
 # 0.0.3
     -   Refactoring service
     -   Injecting service dependecies

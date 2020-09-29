@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using hackernewsapi.Services;
 using hackernewsapi.Services.Api;
+using hackernewsapi.Model;
 
 namespace hackernewsapi.Controllers
 {
@@ -23,7 +24,7 @@ namespace hackernewsapi.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Story>> Get()
+        public async Task<IEnumerable<OutputStory>> Get()
         {
             return await _hackerNewsService.GetBestOrderedStories();
         }

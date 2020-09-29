@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using hackernewsapi.Model;
 using Refit;
 
 namespace hackernewsapi.Services.Api{
