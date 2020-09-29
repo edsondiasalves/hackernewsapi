@@ -1,3 +1,8 @@
+# 0.0.3
+    -   Refactoring service
+    -   Injecting service dependecies
+    -   Adding Refit library
+
 # 0.0.2
     -   Parallelizing details calls
     -   5 seconds do get the 20 best stories
