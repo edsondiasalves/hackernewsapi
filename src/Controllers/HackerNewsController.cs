@@ -25,19 +25,25 @@ namespace hackernewsapi.Controllers
         [HttpGet]
         public async Task<IEnumerable<Story>> Get()
         {
-            var client = new HttpClient();
             var stories = new List<Story>();
 
-            var responseBestStories = await client.GetStringAsync(BEST_STORIES_URL);
-            var bestStories = JsonSerializer.Deserialize<int[]>(responseBestStories);
+            using (var client = new HttpClient()){            
+                var responseBestStories = await client.GetStringAsync(BEST_STORIES_URL);
+                var bestStories = JsonSerializer.Deserialize<int[]>(responseBestStories);
 
-            Array.Sort(bestStories);
+                Array.Sort(bestStories);
+                
+                var tasks = bestStories.Select(async currentStory =>
+                {
+                    var url = $"{STORY_DETAIL_URL}{currentStory}.json";
+                    await client.GetStringAsync(url).ContinueWith(response =>
+                    {
+                        Story story = JsonSerializer.Deserialize<Story>(response.Result);
+                        stories.Add(story);
+                    });
+                }).ToList();
 
-            foreach(var currentStory in bestStories){ 
-                var responseStory = await client.GetStringAsync($"{STORY_DETAIL_URL}{currentStory}.json");   
-                var story = JsonSerializer.Deserialize<Story>(responseStory);
-
-                stories.Add(story);
+                Task.WaitAll(tasks.ToArray());
             }
 
             return stories.OrderByDescending(s => s.score).Take(20);
