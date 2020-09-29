@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using hackernewsapi.Services;
+using hackernewsapi.Services.Api;
 
 namespace hackernewsapi.Controllers
 {
@@ -24,22 +25,7 @@ namespace hackernewsapi.Controllers
         [HttpGet]
         public async Task<IEnumerable<Story>> Get()
         {
-            var stories = new List<Story>();
-
-            using (var client = new HttpClient()){            
-                var bestStories = await _hackerNewsService.GetBestStoryIds();
-                Array.Sort(bestStories);
-                
-                var tasks = bestStories.Select(async currentStory =>
-                {
-                    Story story = await _hackerNewsService.GetStoryFromId(currentStory);
-                    stories.Add(story);
-                }).ToList();
-
-                Task.WaitAll(tasks.ToArray());
-            }
-
-            return stories.OrderByDescending(s => s.score).Take(20);
+            return await _hackerNewsService.GetBestOrderedStories();
         }
     }
 }

@@ -1,34 +1,38 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using hackernewsapi.Services.Api;
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace hackernewsapi.Services{
     public class HackerNewsService : IHackerNewsService
     {
-        private const string BEST_STORIES_URL = "Https://hacker-news.firebaseio.com/v0/beststories.json";
-        private const string STORY_DETAIL_URL = "https://hacker-news.firebaseio.com/v0/item/";
-
-        public async Task<int[]> GetBestStoryIds()
-        {
-            using (var client = new HttpClient())
-            {
-                var responseBestStories = await client.GetStringAsync(BEST_STORIES_URL);
-                var bestStories = JsonSerializer.Deserialize<int[]>(responseBestStories);
-                Array.Sort(bestStories);
-                return bestStories;
-            }
+        private IHackerNewsApi _hackerNewsApi;
+        public HackerNewsService([FromServices]IHackerNewsApi hackerNewsApi){
+            _hackerNewsApi = hackerNewsApi;
         }
 
-        public async Task<Story> GetStoryFromId(int storyId)
+        public async Task<IEnumerable<Story>> GetBestOrderedStories()
         {
-            using (var client = new HttpClient())
-            {
-                var url = $"{STORY_DETAIL_URL}{storyId}.json";
-                var responseBestStories = await client.GetStringAsync(url);
-                Story story = JsonSerializer.Deserialize<Story>(responseBestStories);
-                return story;
+            var stories = new List<Story>();
+
+            using (var client = new HttpClient()){            
+                var bestStories = await _hackerNewsApi.GetBestStories();
+                Array.Sort(bestStories);
+
+                var tasks = bestStories.Select(async storyId =>
+                {
+                    Story story = await _hackerNewsApi.GetStoryById(storyId);
+                    stories.Add(story);
+                }).ToList();
+
+                Task.WaitAll(tasks.ToArray());
             }
+
+            return stories.OrderByDescending(s => s.score).Take(20);
         }
     }
 
