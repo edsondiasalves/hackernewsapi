@@ -39,7 +39,7 @@ namespace hackernewsapitest.Services
                                 .Returns(outputs);
 
             //Act
-            var stories = await _hackerNewsService.GetBestOrderedStories();
+            var stories = await _hackerNewsService.GetBestOrderedStories(false);
 
             //Asset
             Assert.IsNotNull(stories);

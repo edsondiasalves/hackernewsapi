@@ -25,7 +25,7 @@ namespace hackernewsapitest.Controllers
         {
             //Arrange
             var emptyList = new List<OutputStory>();
-            _mockHackerNewsService.Setup(s => s.GetBestOrderedStories()).ReturnsAsync(emptyList);
+            _mockHackerNewsService.Setup(s => s.GetBestOrderedStories(false)).ReturnsAsync(emptyList);
 
             //Act
             var stories = await _hackerNewsController.Get();
@@ -41,7 +41,7 @@ namespace hackernewsapitest.Controllers
             //Arrange
             var singleStoryList = new List<OutputStory>();
             singleStoryList.Add(new OutputStory());
-            _mockHackerNewsService.Setup(s => s.GetBestOrderedStories()).ReturnsAsync(singleStoryList);
+            _mockHackerNewsService.Setup(s => s.GetBestOrderedStories(false)).ReturnsAsync(singleStoryList);
 
             //Act
             var stories = await _hackerNewsController.Get();
