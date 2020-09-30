@@ -4,7 +4,7 @@ using hackernewsapi.Model;
 
 namespace hackernewsapi.Profiles{
 
-    class HackerNewsProfile : Profile
+    public class HackerNewsProfile : Profile
     {
         public HackerNewsProfile(){
             CreateMap<Story, OutputStory>()
@@ -12,10 +12,9 @@ namespace hackernewsapi.Profiles{
             .ForMember(dest => dest.postedBy, opt => opt.MapFrom(src => src.by))
             .ForMember(dest => dest.commentCount, opt => opt.MapFrom(src => src.descendants))
             .ForMember(dest => dest.time, opt => opt.MapFrom(src => formatDate(src.time)));
-
         }
 
-        private string formatDate(int unixDate)
+        private string formatDate(long unixDate)
         {
             var dotNetDate = DateTimeOffset.FromUnixTimeSeconds(unixDate);
             return dotNetDate.LocalDateTime.ToString("yyyy-MM-ddTHH:mm:ssK");

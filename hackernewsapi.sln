@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hackernewsapi", "src\hackernewsapi.csproj", "{C1C6F1A7-12BE-48B9-B9E3-3EC5FA61AFD5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hackernewsapitest", "test\hackernewsapitest.csproj", "{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{C1C6F1A7-12BE-48B9-B9E3-3EC5FA61AFD5}.Release|x64.Build.0 = Release|Any CPU
 		{C1C6F1A7-12BE-48B9-B9E3-3EC5FA61AFD5}.Release|x86.ActiveCfg = Release|Any CPU
 		{C1C6F1A7-12BE-48B9-B9E3-3EC5FA61AFD5}.Release|x86.Build.0 = Release|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Debug|x64.Build.0 = Debug|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Debug|x86.Build.0 = Debug|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Release|x64.ActiveCfg = Release|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Release|x64.Build.0 = Release|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Release|x86.ActiveCfg = Release|Any CPU
+		{45987A4E-1425-4CD8-BE75-CCAB7F9F6FD3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

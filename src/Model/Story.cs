@@ -4,7 +4,7 @@ namespace hackernewsapi.Model{
         public string url { get; set; }
         public string by { get; set; }
         public string type { get; set; }
-        public int time { get; set; }
+        public long time { get; set; }
         public int score { get; set; }
         public int descendants { get; set; }
     }

@@ -1,3 +1,7 @@
+# 0.0.5
+    -   Adding unit-tests
+    -   Adding information to README.md
+    
 # 0.0.4
     -   Adding AutoMapper library
     -   Returning custom story format
