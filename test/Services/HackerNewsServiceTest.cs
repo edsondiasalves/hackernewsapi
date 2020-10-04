@@ -25,7 +25,7 @@ namespace hackernewsapitest.Services
         }
 
         [TestMethod]
-        public async Task  GetBestOrderedStories_Default_ReturnsTwoOrderedStories()
+        public async Task  GetBestOrderedStories_DisablingCache_ReturnsTwoOrderedStories()
         {
             //Arrange
             var firstOutputStory = new OutputStory() { score = 100 };
@@ -46,6 +46,40 @@ namespace hackernewsapitest.Services
             Assert.AreEqual(2, stories.Count());
             Assert.AreEqual(100, stories.First().score);
             Assert.AreEqual(50, stories.Last().score);
+        }
+
+        [TestMethod]
+        public async Task  GetBestOrderedStories_EnablingCache_ReturnsTwoOrderedStories()
+        {
+            //Arrange
+            var firstOutputStory = new OutputStory() { score = 100 };
+            var secondOutputStory = new OutputStory() { score = 50 };
+            var outputs = new List<OutputStory> { firstOutputStory, secondOutputStory }; 
+
+            _mockHackerNewsApi.Setup(s => s.GetBestStories()).ReturnsAsync(new int[]{1, 2});
+            _mockHackerNewsApi.Setup(s => s.GetStoryById(It.IsAny<int>())).ReturnsAsync(new Story());
+            _mockMapper.Setup(s => s
+                                .Map<List<OutputStory>>(It.IsAny<List<Story>>()))
+                                .Returns(outputs);
+
+            //Act
+            var stories = await _hackerNewsService.GetBestOrderedStories(true);
+
+            //Asset
+            Assert.IsNotNull(stories);
+            Assert.AreEqual(2, stories.Count());
+            Assert.AreEqual(100, stories.First().score);
+            Assert.AreEqual(50, stories.Last().score);
+        }
+
+        [TestMethod]
+        public void  CleanCache_Default_ClearServiceCache()
+        {
+            //Act
+            _hackerNewsService.CleanCache();
+
+            //Asset
+            Assert.IsNotNull(_hackerNewsService);
         }
     }
 }

@@ -54,5 +54,15 @@ namespace hackernewsapitest.Controllers
             Assert.IsNotNull(stories);
             Assert.AreEqual(1, stories.Count());
         }
+
+        [TestMethod]
+        public void CleanCache_Default_ClearServiceCache()
+        {
+            //Act
+            _hackerNewsController.CleanCache();
+
+            //Asset
+            Assert.IsNotNull(_hackerNewsController);
+        }
     }
 }
