@@ -35,8 +35,6 @@ Check the [Changelog file](/CHANGELOG.md) to see how I evolved the code since th
 
 There is a bunch of features and good practices to enhance the service, I will add them as soon as posible, the main improvement points are:
 
- - Code coverage reports: Implement the code coverage report tool
-
  - Swagger documentation: Generate automatically swagger documentation of the service description
 
  - Global exception handler: Implement a single point of treatment for exceptions (Global Filter)
@@ -44,5 +42,3 @@ There is a bunch of features and good practices to enhance the service, I will a
  - Input validation: Implement a single point for treat mandatory fields in the request
 
  - Integration tests: Implement integrated test that run the server and fetch real data.
-
- - Continuous Integration: Implement a pipeline that checks the state of the code before commit in the main branch

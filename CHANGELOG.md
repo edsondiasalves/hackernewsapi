@@ -1,6 +1,8 @@
 # 0.0.6
     -   Implementing cache in memory
     -   Adding clean cache endpoint
+    -   Setting github action to build/test every push
+    -   Adding code coverage
     
 # 0.0.5
     -   Adding unit-tests
