@@ -1,5 +1,5 @@
 ![.NET Core](https://github.com/edsondiasalves/hackernewsapi/workflows/.NET%20Core/badge.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/edsondiasalves/hackernewsapi/badge.svg)](https://coveralls.io/github/edsondiasalves/hackernewsapi)
+[![Coverage Status](https://coveralls.io/repos/github/edsondiasalves/hackernewsapi/badge.svg?branch=master)](https://coveralls.io/github/edsondiasalves/hackernewsapi?branch=master)
 
 # This is the HackerNewsApi
 
