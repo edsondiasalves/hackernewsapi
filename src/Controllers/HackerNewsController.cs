@@ -9,6 +9,7 @@ using System.Text.Json;
 using hackernewsapi.Services;
 using hackernewsapi.Services.Api;
 using hackernewsapi.Model;
+using Microsoft.AspNetCore.Http;
 
 namespace hackernewsapi.Controllers
 {
@@ -23,7 +24,25 @@ namespace hackernewsapi.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        ///     Return the first 20 hacker news ordered by score
+        /// </summary>
+        /// <remarks>
+        ///     For default we cache the results but you can disable the cache 
+        ///     setting the DisableCache header attribute to false
+        ///
+        ///     Sample request:
+        ///     GET /hackernews --header 'DisableCache: true'
+        /// </remarks>
+        /// <returns>
+        ///     A list of OutputStory ordered by score
+        /// </returns>
+        /// <response code="200">The best hacker news</response>
+        /// <response code="500">Server internal error</response>
         [HttpGet]
+        [Route("/hackernews")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IEnumerable<OutputStory>> Get()
         {
 
@@ -33,8 +52,20 @@ namespace hackernewsapi.Controllers
             return await _hackerNewsService.GetBestOrderedStories(disableCache);
         }
 
-        [HttpGet]
+
+        /// <summary>
+        ///     Clean the news cache
+        /// </summary>
+        /// <remarks>
+        ///     Sample request:
+        ///     GET /clean
+        /// </remarks>        
+        /// <response code="200">Cache cleaned successfully</response>
+        /// <response code="500">Server internal error</response>
+[       HttpGet]
         [Route("/clean")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult CleanCache()
         {
             _hackerNewsService.CleanCache();
