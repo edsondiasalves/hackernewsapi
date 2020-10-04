@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using hackernewsapi.Controllers;
 using hackernewsapi.Model;
 using hackernewsapi.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -18,6 +20,8 @@ namespace hackernewsapitest.Controllers
         public HackerNewsControllerTest(){
             _mockHackerNewsService = new Mock<IHackerNewsService>();
             _hackerNewsController = new HackerNewsController(null, _mockHackerNewsService.Object);
+            _hackerNewsController.ControllerContext = new ControllerContext();
+            _hackerNewsController.ControllerContext.HttpContext = new DefaultHttpContext();
         }
 
         [TestMethod]
