@@ -1,6 +1,10 @@
+![.NET Core](https://github.com/edsondiasalves/hackernewsapi/workflows/.NET%20Core/badge.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/edsondiasalves/hackernewsapi/badge.svg)](https://coveralls.io/github/edsondiasalves/hackernewsapi)
+
 # This is the HackerNewsApi
 
 The hacker new api, is a service that returns
+
 
 ## How to run the app
     - mkdir hackernewsapi
