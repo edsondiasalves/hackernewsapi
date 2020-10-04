@@ -1,3 +1,7 @@
+# 0.0.6
+    -   Implementing cache in memory
+    -   Adding clean cache endpoint
+    
 # 0.0.5
     -   Adding unit-tests
     -   Adding information to README.md

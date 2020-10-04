@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using hackernewsapi.Controllers;
 using hackernewsapi.Model;
 using hackernewsapi.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -18,6 +20,8 @@ namespace hackernewsapitest.Controllers
         public HackerNewsControllerTest(){
             _mockHackerNewsService = new Mock<IHackerNewsService>();
             _hackerNewsController = new HackerNewsController(null, _mockHackerNewsService.Object);
+            _hackerNewsController.ControllerContext = new ControllerContext();
+            _hackerNewsController.ControllerContext.HttpContext = new DefaultHttpContext();
         }
 
         [TestMethod]
@@ -25,7 +29,7 @@ namespace hackernewsapitest.Controllers
         {
             //Arrange
             var emptyList = new List<OutputStory>();
-            _mockHackerNewsService.Setup(s => s.GetBestOrderedStories()).ReturnsAsync(emptyList);
+            _mockHackerNewsService.Setup(s => s.GetBestOrderedStories(false)).ReturnsAsync(emptyList);
 
             //Act
             var stories = await _hackerNewsController.Get();
@@ -41,7 +45,7 @@ namespace hackernewsapitest.Controllers
             //Arrange
             var singleStoryList = new List<OutputStory>();
             singleStoryList.Add(new OutputStory());
-            _mockHackerNewsService.Setup(s => s.GetBestOrderedStories()).ReturnsAsync(singleStoryList);
+            _mockHackerNewsService.Setup(s => s.GetBestOrderedStories(false)).ReturnsAsync(singleStoryList);
 
             //Act
             var stories = await _hackerNewsController.Get();

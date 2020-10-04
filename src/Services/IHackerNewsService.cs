@@ -5,6 +5,8 @@ using hackernewsapi.Model;
 namespace hackernewsapi.Services{
     public interface IHackerNewsService
     {
-        Task<IEnumerable<OutputStory>> GetBestOrderedStories();
+        Task<IEnumerable<OutputStory>> GetBestOrderedStories(bool disableCache);
+
+        void CleanCache();
     }
 }

@@ -26,7 +26,7 @@ namespace hackernewsapi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IHackerNewsService, HackerNewsService>();
+            services.AddSingleton<IHackerNewsService, HackerNewsService>();
             services.AddRefitClient<IHackerNewsApi>().ConfigureHttpClient(
                 c => c.BaseAddress = new Uri(Configuration["HackerNewsBaseApi"])
             );

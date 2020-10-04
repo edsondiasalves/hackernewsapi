@@ -26,7 +26,19 @@ namespace hackernewsapi.Controllers
         [HttpGet]
         public async Task<IEnumerable<OutputStory>> Get()
         {
-            return await _hackerNewsService.GetBestOrderedStories();
+
+            bool disableCache = false;
+            bool.TryParse(Request.Headers["DisableCache"], out disableCache);
+
+            return await _hackerNewsService.GetBestOrderedStories(disableCache);
+        }
+
+        [HttpGet]
+        [Route("/clean")]
+        public IActionResult CleanCache()
+        {
+            _hackerNewsService.CleanCache();
+            return Ok();
         }
     }
 }
