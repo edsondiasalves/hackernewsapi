@@ -1,3 +1,6 @@
+# 0.0.7
+    -   Adding swagger Automatic documentation
+    
 # 0.0.6
     -   Implementing cache in memory
     -   Adding clean cache endpoint

@@ -35,10 +35,8 @@ Check the [Changelog file](/CHANGELOG.md) to see how I evolved the code since th
 
 There is a bunch of features and good practices to enhance the service, I will add them as soon as posible, the main improvement points are:
 
- - Swagger documentation: Generate automatically swagger documentation of the service description
+ - Integration tests: Implement integrated test that run the server and fetch real data.
 
  - Global exception handler: Implement a single point of treatment for exceptions (Global Filter)
 
  - Input validation: Implement a single point for treat mandatory fields in the request
-
- - Integration tests: Implement integrated test that run the server and fetch real data.
