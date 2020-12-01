@@ -1,3 +1,6 @@
+# 0.0.8
+    -   Implementing integration tests
+
 # 0.0.7
     -   Adding swagger Automatic documentation
     

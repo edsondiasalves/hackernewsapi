@@ -43,7 +43,6 @@ namespace hackernewsapi.Services
 
                 var tasks = bestStories.Select(async storyId =>
                 {
-
                     Story story = await GetStoryFromCache(storyId, disableCache);
                     stories.Add(story);
                 }).ToList();

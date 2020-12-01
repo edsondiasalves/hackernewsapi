@@ -43,9 +43,9 @@ namespace hackernewsapi.Controllers
         [Route("/hackernews")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Produces(typeof(IEnumerable<OutputStory>))]
         public async Task<IEnumerable<OutputStory>> Get()
         {
-
             bool disableCache = false;
             bool.TryParse(Request.Headers["DisableCache"], out disableCache);
 
@@ -62,7 +62,7 @@ namespace hackernewsapi.Controllers
         /// </remarks>        
         /// <response code="200">Cache cleaned successfully</response>
         /// <response code="500">Server internal error</response>
-[       HttpGet]
+        [HttpGet]
         [Route("/clean")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

@@ -5,7 +5,6 @@
 
 The hacker new api, is a service that returns
 
-
 ## How to run the app
     - mkdir hackernewsapi
     - git clone [](https://github.com/edsondiasalves/hackernewsapi.git)
@@ -34,8 +33,6 @@ Check the [Changelog file](/CHANGELOG.md) to see how I evolved the code since th
 ## Next features
 
 There is a bunch of features and good practices to enhance the service, I will add them as soon as posible, the main improvement points are:
-
- - Integration tests: Implement integrated test that run the server and fetch real data.
 
  - Global exception handler: Implement a single point of treatment for exceptions (Global Filter)
 
