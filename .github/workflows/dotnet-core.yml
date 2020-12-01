@@ -25,10 +25,14 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     
-    - name: Test
-      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput='../coverage/lcov.info'
+    - name: Unit Tests
+      run: dotnet test unit_tests/unit_tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput='../coverage/lcov.info'
     
     - name: Coveralls GitHub Action
       uses: coverallsapp/github-action@v1.1.2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Integration Tests
+      run: dotnet test integration_tests/integration_tests.csproj
+    
