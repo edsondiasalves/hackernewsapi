@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace unit_tests.Controllers
+namespace hackernewsapi.unit.tests.Controllers
 {
     [TestClass]
     public class HackerNewsControllerTest

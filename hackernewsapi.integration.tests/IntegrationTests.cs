@@ -7,14 +7,14 @@ using System.Collections.Generic;
 using hackernewsapi.Model;
 using System.Net;
 
-namespace integration_tests
+namespace hackernewsapi.integration.tests
 {
     [TestClass]
-    public class HackerNewsIntegrationTests
+    public class IntegrationTests
     {
         private readonly WebApplicationFactory<Startup> _factory;
 
-        public HackerNewsIntegrationTests()
+        public IntegrationTests()
         {
             _factory = new TesteFactory();
         }

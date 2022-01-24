@@ -3,18 +3,14 @@
 
 # This is the HackerNewsApi
 
-The hacker new api, is a service that returns
+The hacker new api, is a service that returns the last news from https://news.ycombinator.com/
 
 ## How to run the app
     - mkdir hackernewsapi
-    - git clone [](https://github.com/edsondiasalves/hackernewsapi.git)
-    - cd hackernewsapi
-    - dotnet build
-    - cd src
-    - dotnet run 
+    - git clone https://github.com/edsondiasalves/hackernewsapi.git
+    - dotnet run --project hackernewsapi/hackernewsapi.csproj 
 
 ## How to run the unit tests
-    - cd hackernewsapi
     - dotnet test
 
 ## How to get the data
