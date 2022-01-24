@@ -9,7 +9,7 @@ using hackernewsapi.Services.Api;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace unit_tests.Services
+namespace hackernewsapi.unit.tests.Services
 {
     [TestClass]
     public class HackerNewsServiceTest

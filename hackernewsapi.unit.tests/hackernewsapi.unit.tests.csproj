@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\hackernewsapi.csproj" />
+    <ProjectReference Include="..\hackernewsapi\hackernewsapi.csproj" />
   </ItemGroup>
 
 </Project>

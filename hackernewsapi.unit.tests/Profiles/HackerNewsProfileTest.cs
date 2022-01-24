@@ -5,7 +5,7 @@ using hackernewsapi.Profiles;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace unit_tests.Profiles
+namespace hackernewsapi.unit.tests.Profiles
 {
     [TestClass]
     public class HackerNewsProfileTest
