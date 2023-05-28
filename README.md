@@ -1,3 +1,5 @@
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/edsondiasalves/hackernewsapi)
+
 ![.NET Core](https://github.com/edsondiasalves/hackernewsapi/workflows/.NET%20Core/badge.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/edsondiasalves/hackernewsapi/badge.svg?branch=master)](https://coveralls.io/github/edsondiasalves/hackernewsapi?branch=master)
 
